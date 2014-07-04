@@ -1,5 +1,5 @@
 var loading = function(){
-	
+
 };
 
 var opt = {
@@ -8,28 +8,28 @@ var opt = {
 
 $(document).ready(function(){
 	$("#refresh").click(function(){
-		$.ajax({url:opt.address, type:'get', dataType:'json' , data:{'m':'process'},  async : true, 
+		$.ajax({url:opt.address, type:'get', dataType:'json' , data:{'m':'process'},  async : true,
 			error: function(res){
 				console.log(res);
 			},
 			success: function(res){
 				console.log(res);
 				$("#status").text(res.status+" , "+res.progress);
-				
+
 				if(res.progress == "complete")
-				{	
+				{
 					$("#refresh").hide();
 					$("#status").append(" , click 'close' for close this window and goto view 3d");
 				}
 			},
-		});	
+		});
 	});
 
 	if(location.search.indexOf('?') != -1)
 	{
 		$("#process").show();
 		$("#upload").hide();
-		
+
 		$("#refresh").trigger('click');
 	}
 
@@ -42,30 +42,31 @@ $(document).ready(function(){
 		else $("#"+_opt[_k]).hide();
 		}
 	});
-	
+
 	//close 关闭
 	$(".close").click(function(){
 		$("#box",parent.document).hide();
-		
+
 		$("#loadTrigger",parent.document).trigger('click');
 	});
-	
+
 	//弹出input用于创建bucket
 	$(".create").click(function(){
 		$("#pop").show();
 	});
-	
+
 	//
 	$("#bn").focus(function(){
 		$(this).val("");
 	});
-	
+
 	//get bucket list
-	$.ajax({url:opt.address, dataType:'json' , data:{'m':'bucketlist'} , async : true, 
-		error:function(res){	
+	$.ajax({url:opt.address, dataType:'json' , data:{'m':'bucketlist'} , async : true,
+		error:function(res){
+      console.log(res);
 			alert('get bucket list error '+res);
 		},
-		
+
 		success:function(res){
 			console.log(res);
 			for(var _i in res)
@@ -73,19 +74,19 @@ $(document).ready(function(){
 				$("#bucketOp").append("<option value = '"+res[_i]+"' >"+res[_i]+"</option>");
 			}
 		}
-		
+
 	});
-	
+
 	$("#bn").blur(function(){
 		var _name = $(this).val();
 		if(_name != '' && !confirm("are you sure use this name?"))
 		{
 			return;
 		}
-		
+
 		$("#pop").hide();
-		
-		$.ajax({url:opt.address, dataType:'json', data:{'m':'create','f':_name}, async:true, 
+
+		$.ajax({url:opt.address, dataType:'json', data:{'m':'create','f':_name}, async:true,
 			error:function(res){
 				alert(res);
 			},
@@ -96,8 +97,8 @@ $(document).ready(function(){
 			},
 		});
 	});
-	
-	
+
+
 	$("#formsubmit").click(function(){
 		var key = $("#bucketOp option:selected").val();
 		$("#uploadform").attr('action',opt.address+"?m=upload&key="+key);
