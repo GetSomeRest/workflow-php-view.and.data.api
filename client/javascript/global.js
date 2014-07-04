@@ -63,7 +63,7 @@ $(document).ready(function(){
 	//get bucket list
 	$.ajax({url:opt.address, dataType:'json' , data:{'m':'bucketlist'} , async : true,
 		error:function(res){
-      console.log(res);
+      console.log(res); // added
 			alert('get bucket list error '+res);
 		},
 
