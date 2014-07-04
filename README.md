@@ -3,7 +3,11 @@ workflow-php
 
 This is a sample in PHP demonstrating the complete Autodesk View and Data API workflow.
 
-Originally created by galikaixin@iuxlabs.com, updated and modified by Jeremy Tammik, Autodesk.
+This sample requires PHP 5.4 or higher.
+
+Originally created by galikaixin@iuxlabs.com on OSX using MAMP development environment.
+
+Edited by Jeremy Tammik, Autodesk.
 
 
 Original documentation
