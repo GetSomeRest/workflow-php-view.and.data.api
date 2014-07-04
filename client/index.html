@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>3d view</title>
+	<link rel="stylesheet" type="text/css" href="style/css.css"/>
+	<link rel="stylesheet" type="text/css" href="style/style.css"/>
+	<script src="javascript/jquery-2.1.1.min.js"></script>
+	<script src="javascript/viewer3D.min.js"></script>
+	<script src="javascript/global.js"></script>
+	<script>
+	var options = {
+		'document' : '',
+		'accessToken' : '',
+		'env' : 'ApigeeProd'
+	};
+
+	$(document).ready(function(){
+		$("#loadTrigger").click(function(){
+      $.ajax({
+ 				url :opt.address,
+ 				data : {'m':'show3d'},
+ 				type :'get',
+ 				async : true,
+ 				error : function(){
+ 					alert("显示3D场景异常");
+ 				},
+ 				success : function(res){
+ 					console.log(res);
+ 					if(res == "") {
+            alert("显示3D场景异常，未找到对应的urn以及token");
+          }
+          else {
+            var resObj = eval("("+res+")");//转换为json对象
+            options.document = 'urn:'+resObj.urn;
+            options.accessToken = resObj.token;
+            initialize();
+          }
+        }
+ 			});
+		});
+
+		function initialize(){
+			var viewerElement = document.getElementById('viewer');
+			//var viewer = new Autodesk.Viewing.GuiViewer3D(viewerElement, {});
+			var viewer = new Autodesk.Viewing.Private.GuiViewer3D(viewerElement, {});
+			viewer.initialize();
+			Autodesk.Viewing.Initializer(options,function() {
+ 	 			loadDocument(viewer, getAuthObject(), options.document);
+			});
+		}
+
+		function loadDocument(viewer, auth, documentId){
+      // Find the first 3d geometry and load that
+
+      Autodesk.Viewing.Document.load(
+        documentId,
+        auth,
+        function(document){ // onLoadCallback
+          var geometryItems = [];
+          geometryItems = Autodesk.Viewing.Document.getSubItemsWithProperties(
+            document.getRootItem(),
+            {
+              'type' : 'geometry',
+              'role' : '3d'
+            },
+            true);
+
+          if (geometryItems.length > 0){
+            viewer.load(document.getViewablePath(geometryItems[0]));
+          }
+        },
+        function(errorMsg, httpErrorCode){ // onErrorCallback
+        	alert("Error: " + errorMsg + " Code: " + httpErrorCode);
+    		}
+      );
+		}
+	});
+</script>
+</head>
+
+<body>
+	<div id="header"></div>
+
+	<div id="main"></div>
+
+	<div id="viewer" style="position:absolute; width:100%; height:550px;"></div>
+
+	<input type="button" value="" id ="loadTrigger" />
+
+	<div id="box">
+		<iframe src="info.html" id="info"/>
+	</div>
+</body>
+</html>

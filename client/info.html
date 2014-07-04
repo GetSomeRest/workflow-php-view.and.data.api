@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>3d view</title>
+	<link rel="stylesheet" type="text/css" href="style/css.css"/>
+	<script src="javascript/jquery-2.1.1.min.js"></script>
+	<script src="javascript/global.js"></script>
+</head>
+
+<body>
+	<div id="wrapper">
+		<div id="menu">
+			<ul>
+				<li data="upload">upload</li>
+				<li class="sep">|</li>
+				<li data="process">process</li>
+				<li class="close">close</li>
+			</ul>
+		</div>
+
+		<div id="upload" class="m20">
+		<form method="post" enctype="multipart/form-data" id="uploadform">
+			<h3>
+        <span class="w100">Step1:</span>
+        <span class="m120">choose a bucket or <a href="javascript:void(0)" class="create">create</a></span>
+      </h3>
+
+			<span class="w200">&nbsp;</span>
+			<span class="m120">
+				<select name="bucketName" id="bucketOp"></select>
+			</span>
+
+			<h3><span class="w100">Step2:</span><span class="m120">upload your file</span></h3>
+
+			<span class="w100">&nbsp;</span>
+			<span class="m120">
+				<input type="file" name="file" id="uploadFile" />
+			</span>
+
+			<h3><span class="w100">Step3:</span><span class="m120">submit</span></h3>
+
+			<span class="w100">&nbsp;</span>
+			<span class="m120">
+			<input type="submit" value="submit" class="submit" id="formsubmit" />
+			</span>
+		</form>
+		</div>
+
+		<div id="process" class="m20">
+			<span id="status"></span>  <input type="button" value="refresh for view process status" id="refresh"/>
+		</div>
+	</div>
+
+	<div id="pop">
+		<input type="input" name="bn" id="bn" value="bucket name"/>
+	</div>
+</body>
+</html>
