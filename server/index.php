@@ -37,6 +37,7 @@ if(isset($go) && $go != "")
   if(!getAccessToken())
   {
     back(GET_TOKEN_ERROR);
+    return;
   }
 }
 
