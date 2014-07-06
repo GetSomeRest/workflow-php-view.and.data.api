@@ -7,13 +7,14 @@
 	<link rel="stylesheet" type="text/css" href="style/css.css"/>
 	<link rel="stylesheet" type="text/css" href="style/style.css"/>
 	<script src="javascript/jquery-2.1.1.min.js"></script>
-	<script src="javascript/viewer3D.min.js"></script>
+	<link rel="stylesheet" href="https://developer.api.autodesk.com/viewingservice/v1/viewers/style.css" type="text/css">
+    <script src="https://developer.api.autodesk.com/viewingservice/v1/viewers/viewer3D.min.js"></script>
 	<script src="javascript/global.js"></script>
 	<script>
 	var options = {
 		'document' : '',
 		'accessToken' : '',
-		'env' : 'ApigeeProd'
+		'env' : 'AutodeskProduction'
 	};
 
 	$(document).ready(function(){
@@ -45,9 +46,10 @@
 			var viewerElement = document.getElementById('viewer');
 			//var viewer = new Autodesk.Viewing.GuiViewer3D(viewerElement, {});
 			var viewer = new Autodesk.Viewing.Private.GuiViewer3D(viewerElement, {});
-			viewer.initialize();
+			
 			Autodesk.Viewing.Initializer(options,function() {
- 	 			loadDocument(viewer, getAuthObject(), options.document);
+				viewer.initialize();
+ 	 			loadDocument(viewer, Autodesk.Viewing.Private.getAuthObject(), options.document);
 			});
 		}
 

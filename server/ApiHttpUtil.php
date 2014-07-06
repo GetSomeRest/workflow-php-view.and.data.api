@@ -230,13 +230,15 @@ class ApiHttpUtil
         $r = curl_getinfo($this->ch);
         $http_code = $r['http_code'];
 
-        staticLog('log','url:'.$r['url'].' ,http_code:'.$http_code.' ,reponse:'.$response);
+        staticLog('log','url:'.$r['url'].' ,http_code:'.$http_code.' ,response:'.$response);
 
         if(curl_errno($this->ch))
         {
-            curl_close($this->ch); //关闭curl链接
+            
 
             staticLog('error',curl_error($this->ch));
+			
+			curl_close($this->ch); //关闭curl链接
 
             return null;
         }

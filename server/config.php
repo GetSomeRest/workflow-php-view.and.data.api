@@ -11,7 +11,7 @@
 define('ENV', 'DEBUG');
 
 //clientID
-define('CLIENT_ID' , 'your client id');
+define('CLIENT_ID' , 'your consumker key');
 
 //secret
 define('SECRET' , 'your secret');
@@ -31,14 +31,14 @@ define('CREATE_BUCKET_API_URL' , 'oss/v1/buckets');
 //3:Upload a seed filed file PUT https://developer.api.autodesk.com/oss/v1/buckets/{bucketkey}/objects/{objectkey}
 define('UPLOAD_FILE_API_URL' , 'oss/v1/buckets/');
 
-//4:Start translation https://developer.api.autodesk.com/viewingservice/v1/bubbles
-define('START_TRANSLATION_API_URL' , 'viewingservice/v1/bubbles');
+//4:Start translation https://developer.api.autodesk.com/viewingservice/v1/register
+define('START_TRANSLATION_API_URL' , 'viewingservice/v1/register');
 
 //5:Get thumb GET https://developer.api.autodesk.com/viewingservice/v1/thumbnails/{base64 encoded id in previous step}
 define('GET_THUMB_URL' , 'viewingservice/v1/thumbnails/');
 
-//6:Check progress https://developer.api.autodesk.com/viewingservice/v1/bubbles/{base64 encoded id in previous step}
-define('CHECK_PROCESS_URL', 'viewingservice/v1/bubbles/');
+//6:Check progress https://developer.api.autodesk.com/viewingservice/v1/{base64 encoded id in previous step}
+define('CHECK_PROCESS_URL', 'viewingservice/v1/');
 
 //不存在的method
 define('METHOD_ERROR' , 1000);
