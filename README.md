@@ -18,7 +18,8 @@ Original documentation
 3. 请修改server/config.php中的CLIENT_ID以及SECRET为您的信息
 4. server/config.php中的DEFAULT_BUCKET参数为默认的bucketKey,可以用于整个业务逻辑的调试
 5. 修改client/javascript/global.js下的opt.address为server端的http路径
-6. 如有任何问题，可以通过galikaixin@iuxlabs.com和我联系，谢谢！
+6. 修改sever/index.php中info.html的路径(约161行）
+7. 如有任何问题，可以通过galikaixin@iuxlabs.com和我联系，谢谢！
 
 Google translated to English, this reads:
 
@@ -27,6 +28,7 @@ Google translated to English, this reads:
 3. modify the server / config.php in CLIENT_ID for your information and SECRET
 4. server / config.php in DEFAULT_BUCKET parameter is the default bucketKey, can be used to debug the whole business logic
 5. opt. modify http address client / javascript / global.js under server-side path
+6. Change the path of info.html in server/index.php(around line 161)
 6. if you have any questions, you can contact me via galikaixin@iuxlabs.com.
 
 thank you!
