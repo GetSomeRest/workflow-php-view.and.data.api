@@ -3,7 +3,7 @@ var loading = function(){
 };
 
 var opt = {
-	address : 'http://localhost/server/index.php'
+	address : 'http://localhost:8081/AViewer/server/index.php'
 };
 
 $(document).ready(function(){

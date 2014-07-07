@@ -158,7 +158,8 @@ function uploadFile()
   $_SESSION['transResultVO'] = $transResultVO;
 
   back(json_encode($transResultVO));
-  back('&nbsp;<a href="http://localhost/client3/info.html?process">view result</a>');
+  //Change this path according to your server configuration
+  back('&nbsp;<a href="http://localhost:8081/Aviewer/client/info.html?process">view result</a>');
 }
 
 function getProcess()
