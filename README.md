@@ -60,3 +60,14 @@ Set up the built-in Apache server as described in
 https://discussions.apple.com/docs/DOC-3083
 
 That worked.
+
+Installation Notes for PHP on Windows(With XAMPP)
+---------------------------------
+
+1. Download and install XAMPP (https://www.apachefriends.org/index.html)
+2. Fix the SSL issue (http://stackoverflow.com/questions/17478283/paypal-access-ssl-certificate-unable-to-get-local-issuer-certificate)
+3. Copy /server and .client to c:\xampp\hotdocs
+4. Launch XAMPP apache server and broswer to http://localhost/client/index.html
+
+
+
