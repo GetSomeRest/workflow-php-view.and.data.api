@@ -134,6 +134,7 @@ function uploadFile()
   }
 
   $fileName = $fName.'_'.time().'.'.$fExt;
+  $fileName = urlencode($fileName);
 
   $upReponseVO = $api->uploadFile($tokenVO->token_type, $tokenVO->access_token, $content, $key, $fileName, $pSize);
 

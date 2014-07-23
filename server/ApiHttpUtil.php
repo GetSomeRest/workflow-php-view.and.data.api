@@ -47,7 +47,7 @@ class ApiHttpUtil
         return null;
     }
 
-    //创建桶
+    //create a bucket
     public function createBucket($author, $token , $bucketName)
     {
         $this->url = MAIN_API_URL . CREATE_BUCKET_API_URL;
@@ -77,7 +77,7 @@ class ApiHttpUtil
         return null;
     }
 
-    //上传文件，返回urn
+    //upload file, retrun urn
     public function uploadFile($author, $token ,$content ,$key ,$fileName ,$size)
     {
         $this->url = MAIN_API_URL . UPLOAD_FILE_API_URL . $key .'/objects/'.$fileName;
@@ -101,7 +101,7 @@ class ApiHttpUtil
 
             staticLog('log','[success] upload file request success, Urn:'.$inRes->id.' , 64baseUrn:'.base64_encode($inRes->id));
 
-            //TODO:不雅观的写法
+            //TODO: not elegant 
             $p = 'bucket-key';
             $p2 = 'sha-1';
             $p3 = 'content-type';
@@ -114,7 +114,7 @@ class ApiHttpUtil
         return null;
     }
 
-    //开始传输
+    //start translation 
     public function startTranslation($author, $token , $urn)
     {
         $this->url = MAIN_API_URL . START_TRANSLATION_API_URL;
