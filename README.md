@@ -8,7 +8,7 @@ This is a sample in PHP demonstrating the complete Autodesk View and Data API wo
 
 * Upload a file to bucket
 * Start translation
-* Monitor progress
+* Monitor translation progress
 * Load it in Viewer. 
 
 ##Dependencies
@@ -19,8 +19,6 @@ This sample requires PHP 5.4 or higher, please be sure to open the curl module
 
 * Get your consumer key and secret key from http://developer.autodesk.com
 * Set your keys in server / config.php for CLIENT_ID and SECRET
-* Modify http address client / javascript / global.js under server-side path according to your server configuration
-* Change the path of info.html in server/index.php(around line 161)
 
 Installation Notes for PHP on Mac
 ---------------------------------
@@ -33,13 +31,13 @@ Installation Notes for PHP on Windows(With XAMPP)
 
 * Download and install XAMPP (https://www.apachefriends.org/index.html)
 * Fix the SSL issue (http://stackoverflow.com/questions/17478283/paypal-access-ssl-certificate-unable-to-get-local-issuer-certificate)
-* Copy /server and .client to c:\xampp\hotdocs
-* Launch XAMPP apache server and broswer to http://localhost/client/index.html
+* Copy /server and /client to c:\xampp\hotdocs
+* Launch XAMPP apache server and browse to http://localhost/client/index.html
 
 
 ## License
 
-client-embedded-view.and.data.api is licensed under the terms of the [MIT License](http://opensource.org/licenses/MIT). Please see the [LICENSE](LICENSE) file for full details.
+This sample is licensed under the terms of the [MIT License](http://opensource.org/licenses/MIT). Please see the [LICENSE](LICENSE) file for full details.
 
 ##Written by 
 
