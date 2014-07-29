@@ -160,7 +160,7 @@ function uploadFile()
 
   back(json_encode($transResultVO));
   //Change this path according to your server configuration
-  back('&nbsp;<a href="http://localhost:8081/Aviewer/client/info.html?process">view result</a>');
+  back('&nbsp;<a href="../client/info.html?process">view result</a>');
 }
 
 function getProcess()

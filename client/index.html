@@ -30,7 +30,7 @@
  				success : function(res){
  					console.log(res);
  					if(res == "") {
-            alert("显示3D场景异常，未找到对应的urn以及token");
+            alert("Error, urn or token is not found.");
           }
           else {
             var resObj = eval("("+res+")");//转换为json对象
@@ -44,12 +44,12 @@
 
 		function initialize(){
 			var viewerElement = document.getElementById('viewer');
-			//var viewer = new Autodesk.Viewing.GuiViewer3D(viewerElement, {});
+
 			var viewer = new Autodesk.Viewing.Private.GuiViewer3D(viewerElement, {});
 			
 			Autodesk.Viewing.Initializer(options,function() {
 				viewer.initialize();
- 	 			loadDocument(viewer, Autodesk.Viewing.Private.getAuthObject(), options.document);
+ 	 			loadDocument(viewer, null, options.document);
 			});
 		}
 

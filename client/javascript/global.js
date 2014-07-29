@@ -3,7 +3,7 @@ var loading = function(){
 };
 
 var opt = {
-	address : 'http://localhost:8081/AViewer/server/index.php'
+	address : '../server/index.php'
 };
 
 $(document).ready(function(){
@@ -50,7 +50,7 @@ $(document).ready(function(){
 		$("#loadTrigger",parent.document).trigger('click');
 	});
 
-	//弹出input用于创建bucket
+	//popup input box for bucket creation 
 	$(".create").click(function(){
 		$("#pop").show();
 	});
