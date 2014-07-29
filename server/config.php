@@ -11,10 +11,10 @@
 define('ENV', 'DEBUG');
 
 //clientID
-define('CLIENT_ID' , 'gP4GrUabh8o5RdTNwuGmHFFeNjt7iw3p');
+define('CLIENT_ID' , 'your consumker key');
 
 //secret
-define('SECRET' , 'yNtTGopBIGAqaWYG');
+define('SECRET' , 'your secret');
 
 //default bucket，默认的bucket
 define('DEFAULT_BUCKET', 'mybucket');
