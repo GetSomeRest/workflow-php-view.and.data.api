@@ -2,97 +2,93 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8" />
-	<title>3d view</title>
-	<link rel="stylesheet" type="text/css" href="style/css.css"/>
-	<link rel="stylesheet" type="text/css" href="style/style.css"/>
-	<script src="javascript/jquery-2.1.1.min.js"></script>
-	<link rel="stylesheet" href="https://developer.api.autodesk.com/viewingservice/v1/viewers/style.css" type="text/css">
+    <meta charset="utf-8" />
+    <title>3d view</title>
+    <link rel="stylesheet" type="text/css" href="style/css.css" />
+    <link rel="stylesheet" type="text/css" href="style/style.css" />
+    <script src="javascript/jquery-2.1.1.min.js"></script>
+    <link rel="stylesheet" href="https://developer.api.autodesk.com/viewingservice/v1/viewers/style.css" type="text/css">
     <script src="https://developer.api.autodesk.com/viewingservice/v1/viewers/viewer3D.min.js"></script>
-	<script src="javascript/global.js"></script>
-	<script>
-	var options = {
-		'document' : '',
-		'accessToken' : '',
-		'env' : 'AutodeskProduction'
-	};
+    <script src="javascript/global.js"></script>
+    <script>
+        var options = {
+            'document' : '',
+            'accessToken' : '',
+            'env' : 'AutodeskProduction'
+        };
 
-	$(document).ready(function(){
-		$("#loadTrigger").click(function(){
-      $.ajax({
- 				url :opt.address,
- 				data : {'m':'show3d'},
- 				type :'get',
- 				async : true,
- 				error : function(){
- 					alert("显示3D场景异常");
- 				},
- 				success : function(res){
- 					console.log(res);
- 					if(res == "") {
-            alert("Error, urn or token is not found.");
-          }
-          else {
-            var resObj = eval("("+res+")");//转换为json对象
-            options.document = 'urn:'+resObj.urn;
-            options.accessToken = resObj.token;
-            initialize();
-          }
-        }
- 			});
-		});
+        $(document).ready(function () {
+            $("#loadTrigger").click(function () {
+                $.ajax({
+                    url: opt.address,
+                    data: { 'm': 'show3d' },
+                    type: 'get',
+                    async: true,
+                    error: function () {
+                        console.log("error when calling" + opt.address);
+                    },
+                    success: function (res) {
+                        console.log(res);
+                        if (res == "") {
+                            alert("Error: no urn or token");
+                        }
+                        else {
+                            var resObj = eval("("+res+")");//JSON.parse(res);
+                            options.document = 'urn:' + resObj.urn;
+                            options.accessToken = resObj.token;
+                            initialize(options);
+                        }
+                    }
+                });
+            });
 
-		function initialize(){
-			var viewerElement = document.getElementById('viewer');
+        });
 
-			var viewer = new Autodesk.Viewing.Private.GuiViewer3D(viewerElement, {});
-			
-			Autodesk.Viewing.Initializer(options,function() {
-				viewer.initialize();
- 	 			loadDocument(viewer, null, options.document);
-			});
-		}
+        
 
-		function loadDocument(viewer, auth, documentId){
-      // Find the first 3d geometry and load that
+            function initialize(options){
+                var viewerElement = document.getElementById('viewer');
+                //var viewer = new Autodesk.Viewing.GuiViewer3D(viewerElement, {});
+                var viewer = new Autodesk.Viewing.Private.GuiViewer3D(viewerElement, {});
+            
+                Autodesk.Viewing.Initializer(options, function () {
+                    viewer.start();
+                    loadDocument(viewer, options.document);
+                });
+            }
 
-      Autodesk.Viewing.Document.load(
-        documentId,
-        auth,
-        function(document){ // onLoadCallback
-          var geometryItems = [];
-          geometryItems = Autodesk.Viewing.Document.getSubItemsWithProperties(
-            document.getRootItem(),
-            {
-              'type' : 'geometry',
-              'role' : '3d'
-            },
-            true);
+            function loadDocument(viewer, documentId) {
+                // Find the first 3d geometry and load that.
+                Autodesk.Viewing.Document.load(documentId, function (doc) {// onLoadCallback
+                    var geometryItems = [];
+                    geometryItems = Autodesk.Viewing.Document.getSubItemsWithProperties(doc.getRootItem(), {
+                        'type': 'geometry',
+                        'role': '3d'
+                    }, true);
 
-          if (geometryItems.length > 0){
-            viewer.load(document.getViewablePath(geometryItems[0]));
-          }
-        },
-        function(errorMsg, httpErrorCode){ // onErrorCallback
-        	alert("Error: " + errorMsg + " Code: " + httpErrorCode);
-    		}
-      );
-		}
-	});
-</script>
+                    if (geometryItems.length > 0) {
+                        viewer.load(doc.getViewablePath(geometryItems[0]));
+                    }
+                }, function (errorMsg) {// onErrorCallback
+                    alert("Load Error: " + errorMsg);
+                });
+            }
+
+        
+    </script>
 </head>
 
 <body>
-	<div id="header"></div>
+    <div id="header"></div>
 
-	<div id="main"></div>
+    <div id="main"></div>
 
-	<div id="viewer" style="position:absolute; width:100%; height:550px;"></div>
+    <div id="viewer" style="position: absolute; width: 100%; height: 550px;"></div>
 
-	<input type="button" value="" id ="loadTrigger" />
+    <input type="button" value="" id="loadTrigger" />
 
-	<div id="box">
-		<iframe src="info.html" id="info"/>
-	</div>
+    <div id="box">
+        <iframe src="info.html" id="info" />
+    </div>
 </body>
 </html>
