@@ -33,6 +33,7 @@ Installation Notes for PHP on Windows(With XAMPP)
 * Fix the SSL issue (http://stackoverflow.com/questions/17478283/paypal-access-ssl-certificate-unable-to-get-local-issuer-certificate)
 * Copy /server and /client to c:\xampp\hotdocs
 * Launch XAMPP apache server and browse to http://localhost/client/index.html
+* Go to *.log file in /server folder for debugging information if you have problems when running this sample
 
 
 ## License
