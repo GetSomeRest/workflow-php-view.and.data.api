@@ -1,5 +1,9 @@
 #Autodesk View and Data API workflow sample in PHP
 
+##Update
+
+This sample is retired, it is not maintained any more. 
+
 ##Description
 
 *This sample is part of the [Developer-Autodesk/Autodesk-View-and-Data-API-Samples](https://github.com/Developer-Autodesk/autodesk-view-and-data-api-samples) repository.*
