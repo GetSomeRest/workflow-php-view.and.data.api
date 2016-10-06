@@ -1,3 +1,5 @@
+# Deprecated sample - not maintained anymore (Summer 2016)
+
 #Autodesk View and Data API workflow sample in PHP
 
 ##Update
